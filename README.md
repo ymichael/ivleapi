@@ -2,7 +2,7 @@
 
 An abstraction layer over NUS IVLE LAPI inspired by [darora/IVLE-Fix](https://github.com/darora/IVLE-Fix)
 
-**A Live app using this api can be found at [http://mod-ivle.herokuapp.com/](http://mod-ivle.herokuapp.com/)**  
+**A Live app using this api can be found at [http://modivle.yrmichael.com/](http://modivle.yrmichael.com/)**  
 
 
 ##README Contents

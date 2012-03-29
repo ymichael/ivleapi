@@ -50,8 +50,8 @@ ivle = (function($){
 					"AuthToken" : this.authtoken,
 					"Duration" : 0,
 					//whether to display basic info or all or it.
-					"IncludeAllInfo" : true,
-					//"IncludeAllInfo" : false,
+					//"IncludeAllInfo" : true,
+					"IncludeAllInfo" : false,
 
 					"output" : "json"
 				};
