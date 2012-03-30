@@ -107,6 +107,68 @@ ivle = (function($){
 				var url = "https://ivle.nus.edu.sg/api/downloadfile.ashx?APIKey=" + apikey + "&AuthToken=" + this.authtoken + "&ID=" + fileId + "&target=workbin";
 				window.location.href = url;
 			}
+			
+			//announcements
+			this.announcements = function(courseId, success, error){
+				var endpoint = 'Announcements';
+				var params = {
+					"APIKey" : apikey,
+					"AuthToken" : this.authtoken,
+					"CourseId" : courseId,
+					"Duration" : 0,
+					//whether to display basic info or all or it.
+					// "TitleOnly" : true,
+					"TitleOnly" : false,
+					"output" : "json"
+				};
+				var url = baseurl + endpoint;
+				jsonp(url, params, success, error, proxy);
+			}
+			
+			//gradebook
+			this.gradebook = function(courseId, success, error){
+				var endpoint = 'Gradebook_ViewItems';
+				var params = {
+					"APIKey" : apikey,
+					"AuthToken" : this.authtoken,
+					"CourseId" : courseId,
+					"output" : "json"
+				};
+				var url = baseurl + endpoint;
+				jsonp(url, params, success, error, proxy);
+			}
+			
+			//forums
+			this.forum = function(courseId, success, error){
+				var endpoint = 'Forums';
+				var params = {
+					"APIKey" : apikey,
+					"AuthToken" : this.authtoken,
+					"CourseId" : courseId,
+					"Duration" : 0,
+					"IncludeThreads" : true, //whether to display threads
+					//whether to display basic info or all or it.
+					// "TitleOnly" : true,
+					"TitleOnly" : false,
+					"output" : "json"
+				};
+				var url = baseurl + endpoint;
+				jsonp(url, params, success, error, proxy);
+			}
+			
+			//webcasts
+			this.webcasts = function(courseId, success, error){
+				var endpoint = 'Webcasts';
+				var params = {
+					"APIKey" : apikey,
+					"AuthToken" : this.authtoken,
+					"CourseId" : courseId,
+					"Duration" : 0,
+					"output" : "json"
+				};
+				var url = baseurl + endpoint;
+				jsonp(url, params, success, error, proxy);
+			}
 		}
 	}
 	return ivle;
