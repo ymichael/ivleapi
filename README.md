@@ -39,9 +39,16 @@ The library exposes a `ivle` global variable.
 
 To begin, create an instance of the `ivle` object with you [LAPI KEY](http://wiki.nus.edu.sg/display/ivlelapi/IVLE+LAPI+Overview)
 
+[OPTIONAL]Passing in a proxyurl as the second argument as a fall back.
+(ivle lapi currently screws up if you have the actual ivle open in a separate window/tab.
+
 ```js
 var myApiKey = "xxxxxxxxxxxxxxxxxxxxx";
 var myApp = new ivle(myApiKey);
+
+//alternatively
+//var myApp = new ivle(myApiKey, "path/to/proxy/url");
+//the api request will be made through the proxy
 ```
 
 ### User Authentication
@@ -141,4 +148,4 @@ user.file(fileId));
 
 For more infomation, look at the [examples](https://github.com/ymichael/ivleapi/tree/master/example) folder
 
-Suggestions and Feedback greatly appreciated!
+Suggestions and Feedback are greatly appreciated!

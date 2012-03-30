@@ -3,19 +3,43 @@ ivle = (function($){
 	//private stuff.
 	var baseurl = "https://ivle.nus.edu.sg/api/Lapi.svc/";
 
-	var jsonp = function(url, params, success, error){
+	var jsonp = function(url, params, success, error, proxyurl){
 		$.ajax({
 			type: 'GET',
 			dataType: 'jsonp',
 			data: params,
+			contentType:"application/x-javascript",
 			url: url,
+			xhrFields: { withCredentials: false },
 			success: success,
-			error: error
+			error: function(xhr, err, errobj){
+				//console.log('revert to proxy');
+				var request = url + "?" +  decodeURIComponent($.param(params));
+				//console.log(request);
+				if (proxyurl){
+					$.ajax({
+						type: 'GET',
+						dataType: 'json',
+						data:{request: request},
+						url: proxyurl,
+						dataFilter: function(data){
+							return $.parseJSON(data);
+						},
+						success: success,
+						error: error
+					});
+				} else {
+					if (error){
+						error.apply(this,arguments);
+					}
+				}
+			}
 		});
 	}
 	//public
-	var ivle = function(apikey){
+	var ivle = function(apikey, proxy){
 		var apikey = apikey;
+		var proxy = proxy;
 		
 		this.auth = function($el, callbackurl){
 			$el.click(function(){
@@ -30,6 +54,7 @@ ivle = (function($){
 			/*
 			 * 	APICALLS (work in progress)
 			 */
+
 			//validate user
 			this.validate = function(success, error){
 				var endpoint = 'Validate';
@@ -39,9 +64,9 @@ ivle = (function($){
 					"output" : "json"
 				};
 				var url = baseurl + endpoint;
-				jsonp(url, params, success, error);
+				jsonp(url, params, success, error, proxy);
 			}
-			
+
 			//modules
 			this.modules = function(success, error){
 				var endpoint = 'Modules';
@@ -50,13 +75,12 @@ ivle = (function($){
 					"AuthToken" : this.authtoken,
 					"Duration" : 0,
 					//whether to display basic info or all or it.
-					//"IncludeAllInfo" : true,
 					"IncludeAllInfo" : false,
-
+					//"IncludeAllInfo" : false,
 					"output" : "json"
 				};
 				var url = baseurl + endpoint;
-				jsonp(url, params, success, error);
+				jsonp(url, params, success, error, proxy);
 			}
 
 			//workbin
@@ -67,16 +91,14 @@ ivle = (function($){
 					"AuthToken" : this.authtoken,
 					"CourseId" : courseId,
 					"Duration" : 0,
-					
 					//"WorkbinID" : 0, // undefined means all
-					
 					//whether to display basic info or all or it.
 					// "TitleOnly" : true,
 					"TitleOnly" : false,
 					"output" : "json"
 				};
 				var url = baseurl + endpoint;
-				jsonp(url, params, success, error);
+				jsonp(url, params, success, error, proxy);
 			}
 
 			//file download
