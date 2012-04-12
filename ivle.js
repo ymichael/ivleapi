@@ -1,5 +1,5 @@
 //main library obj
-ivle = (function($){
+var ivle = (function($){
 	//private stuff.
 	var baseurl = "https://ivle.nus.edu.sg/api/Lapi.svc/";
 
@@ -55,6 +55,13 @@ ivle = (function($){
 			 * 	APICALLS (work in progress)
 			 */
 
+			//set auth token
+			this.setauthtoken = function(newauthtoken){
+				this.authtoken = newauthtoken;
+			}
+
+
+
 			//validate user
 			this.validate = function(success, error){
 				var endpoint = 'Validate';
@@ -76,7 +83,6 @@ ivle = (function($){
 					"Duration" : 0,
 					//whether to display basic info or all or it.
 					"IncludeAllInfo" : false,
-					//"IncludeAllInfo" : false,
 					"output" : "json"
 				};
 				var url = baseurl + endpoint;

@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>IVLE api test</title>
+		<link rel="stylesheet" type="text/css" href="test.css">
+	</head>
+	<body>
+		<header>IVLE.JS LIBRARY TESTER</header>
+		<i>click on the tests to see the response</i>
+		<div id='main_container'>
+			
+		</div>
+		<script type="text/javascript" src='../lib/jquery-1.7.2.js'></script>
+		<script type="text/javascript" src='underscore.js'></script>
+		<script type="text/javascript" src='ich.js'></script>
+		<script type="text/javascript" src='../ivle.js'></script>
+		<script type="text/javascript" src='apitest.js'></script>
+
+		<!-- ich templates -->
+		<script type='text/html' id='test'>
+			<div class='test {{ status }}'>
+				<h3 class='name'>{{ name }}</h3>
+				<p>Status: <span class="{{ status }}">{{status}}</span></p>
+				<p>JSON response:</p>
+				<pre class='responsepreview'>{{ response }}</pre>
+			</div>
+		</script>
+		<script type='text/html' id='loading'>
+			<div class='loading'>
+				<h3 class='name'>loading: {{name}}</h3>
+			</div>
+		</script>
+		<script type='text/html' id='done'>
+			<div class='loading'>
+				<h3 class='name'>all tests done.</h3>
+			</div>
+		</script>
+	</body>
+</html>

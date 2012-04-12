@@ -1,0 +1,56 @@
+body {
+font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
+font-weight: normal;
+color: #555;
+letter-spacing: -1px;
+}
+header {
+padding: 0px;
+margin: 0;
+border-bottom: solid 1px #e5e5e5;
+font-size: 25px;
+}
+i {
+font-size: 14px;
+}
+#login {
+border: solid 1px;
+padding: 5px;
+cursor: pointer;
+}
+
+.test {
+padding: 0px 5px;
+position: relative;
+height: 80px;
+overflow: hidden;
+}
+.view {
+height: auto;
+}
+.success {
+border-bottom: solid 2px green;
+}
+.error {
+border: solid 2px red;
+}
+span.success {
+color: green;
+border: none;
+}
+span.error {
+color: red;
+border: none;
+}
+.responsepreview {
+border: solid 1px #e5e5e5;
+width: 85%;
+margin-left: 15%;
+max-height: 200px;
+overflow: scroll;
+}
+.loading{
+border-bottom: solid 1px blue;
+font-size: 14px;
+color: black;
+}
