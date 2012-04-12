@@ -35,11 +35,11 @@ var ivle = (function($){
 				}
 			}
 		});
-	}
+	};
 	//public
 	var ivle = function(apikey, proxy){
-		var apikey = apikey;
-		var proxy = proxy;
+		this.apikey = apikey;
+		this.proxy = proxy;
 		
 		this.auth = function($el, callbackurl){
 			$el.click(function(){
@@ -52,13 +52,13 @@ var ivle = (function($){
 		this.user = function(authtoken){
 			this.authtoken = authtoken;
 			/*
-			 * 	APICALLS (work in progress)
-			 */
+			*	APICALLS (work in progress)
+			*/
 
 			//set auth token
 			this.setauthtoken = function(newauthtoken){
 				this.authtoken = newauthtoken;
-			}
+			};
 
 
 
@@ -72,7 +72,7 @@ var ivle = (function($){
 				};
 				var url = baseurl + endpoint;
 				jsonp(url, params, success, error, proxy);
-			}
+			};
 
 			//modules
 			this.modules = function(success, error){
@@ -87,7 +87,7 @@ var ivle = (function($){
 				};
 				var url = baseurl + endpoint;
 				jsonp(url, params, success, error, proxy);
-			}
+			};
 
 			//workbin
 			this.workbin = function(courseId, success, error){
@@ -105,14 +105,14 @@ var ivle = (function($){
 				};
 				var url = baseurl + endpoint;
 				jsonp(url, params, success, error, proxy);
-			}
+			};
 
 			//file download
 			this.file = function(fileId){
 				//dont like this. but it works
 				var url = "https://ivle.nus.edu.sg/api/downloadfile.ashx?APIKey=" + apikey + "&AuthToken=" + this.authtoken + "&ID=" + fileId + "&target=workbin";
 				window.location.href = url;
-			}
+			};
 			
 			//announcements
 			this.announcements = function(courseId, success, error){
@@ -129,7 +129,7 @@ var ivle = (function($){
 				};
 				var url = baseurl + endpoint;
 				jsonp(url, params, success, error, proxy);
-			}
+			};
 			
 			//gradebook
 			this.gradebook = function(courseId, success, error){
@@ -142,7 +142,7 @@ var ivle = (function($){
 				};
 				var url = baseurl + endpoint;
 				jsonp(url, params, success, error, proxy);
-			}
+			};
 			
 			//forums
 			this.forum = function(courseId, success, error){
@@ -160,7 +160,7 @@ var ivle = (function($){
 				};
 				var url = baseurl + endpoint;
 				jsonp(url, params, success, error, proxy);
-			}
+			};
 			
 			//webcasts
 			this.webcasts = function(courseId, success, error){
@@ -174,8 +174,8 @@ var ivle = (function($){
 				};
 				var url = baseurl + endpoint;
 				jsonp(url, params, success, error, proxy);
-			}
-		}
-	}
+			};
+		};
+	};
 	return ivle;
 })($);
