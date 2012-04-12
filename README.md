@@ -8,11 +8,13 @@ An abstraction layer over NUS IVLE LAPI inspired by [darora/IVLE-Fix](https://gi
 ##README Contents
  - [Purpose](#a1)
 
- - [Dependencies](#a2)  
-
- - [Public Methods](#a3)
+ - [Dependencies](#a2)
  
- - [Others](#a4)
+ - [Tests](#a3)
+
+ - [Public Methods](#a4)
+ 
+ - [Others](#a5)
 
 
 <a name='a1'/>
@@ -30,7 +32,19 @@ Basically, to get started just include the following in your html file:
 <script type="text/javascript" src='path/to/ivle.js'></script>
 ```
 
+
 <a name='a3'/>
+## Tests
+
+Tests need to be run on a server (localhost) and involve two steps.
+
+1. Authentication step
+2. API calls (needs token from step 1 to run)
+
+Just open `test/test.html` to begin tests.
+
+
+<a name='a4'/>
 ## Public Methods
 
 ### Application Initialization
@@ -142,10 +156,36 @@ This downloads the file given the `fileId` (again from the previous api call)
 var fileId = 'xxxxxxxx'
 user.file(fileId));
 ```
+**Other API endpoints**
 
-<a name='a4'/>
+The library current exposes some other api endpoints: (more will be added)
+
+```js
+var success = function(data, textStatus, jqXHR){
+	//do smth with the data.
+}
+
+var error = function(jqXHR, textStatus, errorThrown){
+	//handle error
+}
+
+var courseId = "xxxxxxxx"; 
+// NOTE: this is not the module code eg. CS1101S
+// this is the id that was return from the earlier api call
+
+//announcements for the particular module
+user.announcements(courseId, success, error);
+
+//forum of the particular module
+user.forum(courseId, success, error);
+
+//webcasts for the particular module
+user.webcasts(courseId, success, error);
+
+//gradebook for the particular module
+user.gradebook(courseId, success, error);
+```
+<a name='a5'/>
 ## Others
-
-For more infomation, look at the [examples](https://github.com/ymichael/ivleapi/tree/master/example) folder
 
 Suggestions and Feedback are greatly appreciated!
